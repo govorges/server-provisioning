@@ -127,6 +127,9 @@ class Configuration:
             if key not in self.__dict__.keys():
                 if not value['nullable']:
                     raise ValueError(f"configuration missing non-nullable key: `{key}`")
+        if self.name is not None:
+            self._name = self.name
+            del self.name
 
     def keyIsValid(self, key: str, data):
         if data is None: # not nullable & data is None returns False

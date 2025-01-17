@@ -39,5 +39,12 @@ def ListServerConfigurations(file: None | str = None) -> list:
             print(f"WARNING: No variable named `SERVER_CONFIGURATION` present in configuration file `{_file}`")
     return server_configurations
 
+def GetConfigurationByName(name: str) -> Configuration:
+    server_configurations = ListServerConfigurations()
+    for configuration in server_configurations:
+        if configuration._name == name:
+            return configuration
+    return None
+
 if __name__ == "__main__":
     ListServerConfigurations(None)
